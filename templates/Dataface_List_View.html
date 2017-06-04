@@ -24,11 +24,7 @@
 		
 		{block name="before_result_list"}
 		{define_slot name="result_list"}
-		{if !$ENV.prefs.use_old_resultlist_controller}
-			<div class="result-list-actions">
-				{actions_menu id="result-list-actions" id_prefix="result-list-actions-" class="icon-only" category="result_list_actions"}
-			</div>
-		{/if}
+
 		<div id="list-window">
 		{if !$ENV.prefs.use_old_resultlist_controller}
 			{if !$ENV.prefs.hide_resultlist_controller}

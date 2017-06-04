@@ -96,10 +96,9 @@
 		
 	<div id="top-section" class="navbar navbar-fixed-top">
 		{block name="before_header"}
-		{define_slot name="global_header"}{include file="global_header.html"}{/define_slot}
 		{block name="after_header"}
 		<div class="navbar-inner">
-			<div class="container"> 
+			<div class="container-fluid"> 
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -240,7 +239,7 @@
 	
 	<div class="main-inner">
 
-	    <div class="container">
+	    <div class="container-fluid">
 
 			<div class="row">
 
@@ -268,7 +267,7 @@
 	{block name="before_main_column"}
 	{define_slot name="main_column"}
 
-			<div id="main_column" {if $ENV.prefs.show_record_tree or (!$ENV.prefs.horizontal_tables_menu and $ENV.prefs.show_tables_menu)}class="span10"{else}class="span12"{/if}>
+  <div id="main_column" >
 				<div class="widget">
 
 		{if $back and !$ENV.APPLICATION.hide_back}
@@ -313,8 +312,20 @@
 			{define_slot name="menus"}
 				{actions var="menus" category="table_actions"}  
  				{if $menus|@count > 0 }
-				<div class="controls pull-right">
 
+        <div class="controls pull-right" style="width:25%;"> <!-- David Gleba kdg54   -->
+
+          <ul style="list-style-type: none;" > <!-- David Gleba kdg54   -->
+
+          <li style="float: left;list-style: none;width:15em;">   <!--   width:40%;padding:3px; -->
+            {if !$ENV.prefs.use_old_resultlist_controller}
+              <div class="result-list-actions">
+                {actions_menu id="result-list-actions" id_prefix="result-list-actions-" class="icon-only" category="result_list_actions"}
+              </div>
+          </li>  
+          
+          <li style="float: right;list-style: none;">  
+            {/if}
                  {foreach from=$menus item="menu" key="name"}
                     <a class="btn btn-mini" href="{$menu.url}"
                        id="actions-menu-{$menu.id}"
@@ -323,9 +334,13 @@
                       {$menu.label}
                     </a>
                 {/foreach}
-
+          </li>  
+          
+         </ul>
+          
     			</div>
-				{/if}
+        {/if}
+        
 			{/define_slot}
 			{block name="after_menus"}
 		{/if}
@@ -368,7 +383,7 @@
 
 			</div>
 
-			</div> <!-- /row -->
+      </div> <!-- /row -->
 
 	    </div> <!-- /container -->
 
