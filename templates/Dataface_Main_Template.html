@@ -139,7 +139,8 @@
 							{/define_slot}
 							{block name="after_user_status_not_logged_in"}
 						{/if}
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						
+<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-flag"></i> Language <b class="caret"></b></a>
 
 							{if !$ENV.prefs.hide_language_selector}
@@ -149,7 +150,7 @@
 								{block name="after_language_selector"}
 							{/if}
 
-						</li>
+						</li> -->
 					</ul>
 		{if $ENV.prefs.show_search}
 		{block name="before_search"}
@@ -206,21 +207,87 @@
 
 	{define_slot name="only_top"}
 
-	{if $ENV.prefs.horizontal_tables_menu and $ENV.prefs.show_tables_menu}
-		{block name="before_nav_menu"}
-	<div class="subnavbar">
-		<div class="subnavbar-inner">
-			<div class="container">
-				{include file="Dataface_NavMenu.html"}
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /subnavbar-inner -->
-	</div>
-		{block name="after_nav_menu"}
-	<!-- /subnavbar -->
-	{/if}
 
+    <!-- 	table menu nav David Gleba kdg54   -->
+    
+	<div id="was_top-section" class="navbar navbar-default">
+		<div class="navbar-inner">
+			<div class="container-fluid"> 
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</a>
+				<a class="brand" href=".">~</a>
+				<div class="nav-collapse">
+				   					
+				{if $ENV.prefs.horizontal_tables_menu and $ENV.prefs.show_tables_menu}
+					{block name="before_nav_menu"}
+					
+						{include file="Dataface_NavMenu.html"}
+						
+					{block name="after_nav_menu"}
+				<!-- /subnavbar -->
+				{/if}
+          
+		         <!--  <ul style="list-style-type: none;" > David Gleba kdg54  
+		
+		          <li style="float: left;list-style: none;width:15em;">     width:40%;padding:3px;
+		            {if !$ENV.prefs.use_old_resultlist_controller}
+		              <div class="result-list-actions">
+		                {actions_menu id="result-list-actions" id_prefix="result-list-actions-" class="icon-only" category="result_list_actions"}
+		              </div>
+		          </li>  
+		          
+		          <li style="float: right;list-style: none;">  
+		            {/if}
+		                 {foreach from=$menus item="menu" key="name"}
+		                    <a class="btn btn-mini" href="{$menu.url}"
+		                       id="actions-menu-{$menu.id}"
+		                       title="{$menu.description}">
+		                      <i class="{if $menu.awicon}{$menu.awicon|escape}{else}icon-magic{/if}"></i> 
+		                      {$menu.label}
+		                    </a>
+		                {/foreach}
+		          </li>  
+		          
+		         </ul> -->
+                
+				</div>
+				<!--/.nav-collapse --> 
+			</div>
+			<!-- /container --> 
+		</div>
+		<!-- /navbar-inner --> 
+	</div>
+		<!-- /navbar -->
+
+<!-- 	{if $ENV.prefs.horizontal_tables_menu and $ENV.prefs.show_tables_menu}
+		{block name="before_nav_menu"}
+	<nav class=" navbar navbar-default">
+		<div class="container-fluid">
+		<div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Brand</a>
+	    </div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			 <div class="container"> 
+				{include file="Dataface_NavMenu.html"}
+			 </div> 
+			/container
+		</div>
+		/subnavbar-inner
+	</div>
+	</nav>
+		{block name="after_nav_menu"}
+	/subnavbar
+	{/if}
+ -->
 
 
 	<div id="top-sect">
@@ -305,26 +372,28 @@
 			</div>
 			{block name="after_errors"}
 		{/if}
-		<div class="widget-header"> <i class="icon-th-list"></i>
-        	<h3>{$ENV.table_object->getLabel()}</h3>
+		<div>
+<!-- 		<div class="widget-header"> <i class="icon-th-list"></i>
+        	<h3>{$ENV.table_object->getLabel()}</h3> -->
 		{if $ENV.prefs.show_table_tabs} 
 			{block name="before_menus"}
 			{define_slot name="menus"}
 				{actions var="menus" category="table_actions"}  
  				{if $menus|@count > 0 }
 
-        <div class="controls pull-right" style="width:25%;"> <!-- David Gleba kdg54   -->
+         <!--         <div class="controls pull-right" style="width:25%;"> David Gleba kdg54   -->
 
-          <ul style="list-style-type: none;" > <!-- David Gleba kdg54   -->
+          <ul style="list-style-type: none; " > <!-- David Gleba kdg54   -->
 
-          <li style="float: left;list-style: none;width:15em;">   <!--   width:40%;padding:3px; -->
+          <li style="float: left;list-style: none;width:15em;height: 45px;">   <!--   width:40%;padding:3px; -->
             {if !$ENV.prefs.use_old_resultlist_controller}
               <div class="result-list-actions">
                 {actions_menu id="result-list-actions" id_prefix="result-list-actions-" class="icon-only" category="result_list_actions"}
               </div>
           </li>  
           
-          <li style="float: right;list-style: none;">  
+          <li style="float: left;list-style: none; vertical-align: middle; ">
+            <span style = "vertical-align: middle; ">
             {/if}
                  {foreach from=$menus item="menu" key="name"}
                     <a class="btn btn-mini" href="{$menu.url}"
@@ -334,11 +403,12 @@
                       {$menu.label}
                     </a>
                 {/foreach}
+            </span>
           </li>  
           
          </ul>
           
-    			</div>
+<!-- 		</div> -->
         {/if}
         
 			{/define_slot}
